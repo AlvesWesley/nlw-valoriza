@@ -10,7 +10,7 @@ module.exports = {
   logging: false,
   logger: new SimpleConsoleLogger(false),
   synchronize: false,
-  entities: ['src/entities/*.js'],
+  entities: ['src/entities/*.ts'],
   migrations: ['src/database/migrations/*.ts'],
   cli: {
     entitiesDir: 'src/entities',
