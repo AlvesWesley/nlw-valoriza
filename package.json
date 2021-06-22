@@ -4,7 +4,8 @@
   "author": "Wesley Alves <wesley_alv@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --rs --transpile-only --require dotenv/config src/server"
+    "dev": "tsnd --rs --transpile-only --require dotenv/config src/server",
+    "migrate": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run"
   },
   "devDependencies": {
     "@types/express": "^4.17.12",
