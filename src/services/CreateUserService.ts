@@ -15,7 +15,7 @@ export class CreateUserService {
   private readonly userRepository = getCustomRepository(UserRepository)
 
   async execute(data: UserRequest): Promise<User> {
-    const { name, email, admin, password } = data
+    const { name, email, admin = false, password } = data
 
     if (!email) throw new Error('Email incorrect')
 
