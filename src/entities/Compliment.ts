@@ -34,6 +34,7 @@ export class Compliment {
   tagId: string
 
   @JoinColumn({ name: 'tag_id' })
+  @ManyToOne(() => Tag)
   tag: Tag
 
   @Column()
