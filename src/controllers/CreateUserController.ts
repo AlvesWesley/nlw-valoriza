@@ -15,15 +15,6 @@ export class CreateUserController {
       password
     })
 
-    const { id, createdAt, updatedAt } = user
-
-    return res.status(201).json({
-      id,
-      name,
-      email,
-      admin,
-      createdAt,
-      updatedAt
-    })
+    return res.status(201).json(user)
   }
 }

@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn
 } from 'typeorm'
+import { Exclude } from 'class-transformer'
 
 import uuid from '../utils/uuid'
 
@@ -23,6 +24,7 @@ export class User {
   admin: boolean
 
   @Column()
+  @Exclude()
   password: string
 
   @CreateDateColumn({ name: 'created_at' })
