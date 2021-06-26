@@ -1,4 +1,5 @@
 import express, { Application } from 'express'
+import cors from 'cors'
 import 'reflect-metadata'
 import 'express-async-errors'
 
@@ -11,6 +12,7 @@ export class App {
   private readonly database = new Database()
 
   private middlewares() {
+    this.app.use(cors())
     this.app.use(express.json())
   }
 
