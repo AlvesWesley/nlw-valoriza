@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 
 import { ServiceError } from '../utils/ServiceError'
+import logger from '../logger'
 
 export function errorHandler(
   err: Error,
@@ -9,6 +10,8 @@ export function errorHandler(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ): Response {
+  logger.debug(err)
+
   if (err instanceof ServiceError) {
     return res.status(err.statusCode).json({ error: err.message })
   }
