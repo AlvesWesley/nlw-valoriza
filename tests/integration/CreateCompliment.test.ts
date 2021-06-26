@@ -6,6 +6,7 @@ import { connectInDatabase, clearDatabase } from '../helpers/seeders/database'
 import { seedUsers } from '../helpers/seeders/user'
 import { seedTags } from '../helpers/seeders/tag'
 import * as stubJwt from '../helpers/stubs/jwt'
+import * as stubMailer from '../helpers/stubs/mailer'
 
 chai.use(chaiHTTP)
 
@@ -14,10 +15,15 @@ describe('Create Compliment', function () {
 
   before(async () => {
     await connectInDatabase()
+    stubMailer.stubSendEmail(true)
   })
 
   beforeEach(async () => {
     await clearDatabase()
+  })
+
+  after(() => {
+    stubMailer.restoreMailer()
   })
 
   describe('resposta bem sucedida (201)', function () {
