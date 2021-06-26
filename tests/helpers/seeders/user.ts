@@ -14,6 +14,16 @@ export const rawUsersData = [
     password: '$2a$10$6JXfa9csKgd2.b8Z35c2BePDjdD.oKqM6O.5hyL12eyWp8456gJ9u', // hard@cor3
     createdAt: new Date(2021, 5, 26, 10, 35, 0),
     updatedAt: new Date(2021, 5, 26, 10, 35, 0)
+  },
+  {
+    // Not admin
+    id: 'ca312af1-5854-4b86-8e9b-afba1c72fee9',
+    name: 'Jane Doe',
+    email: 'janedoe@example.com',
+    admin: false,
+    password: '$2a$10$6JXfa9csKgd2.b8Z35c2BePDjdD.oKqM6O.5hyL12eyWp8456gJ9u', // hard@cor3
+    createdAt: new Date(2021, 5, 26, 10, 35, 0),
+    updatedAt: new Date(2021, 5, 26, 10, 35, 0)
   }
 ]
 
