@@ -10,16 +10,22 @@ import {
 import { seedUsers } from '../../helpers/seeders/user'
 import { seedTags } from '../../helpers/seeders/tag'
 import { complimentsData } from '../../helpers/data/compliment'
+import * as stubMailer from '../../helpers/stubs/mailer'
 
 chai.use(chaiPromised)
 
 describe('CreateComplimentService', function () {
   before(async () => {
     await connectInDatabase()
+    stubMailer.stubSendEmail(true)
   })
 
   beforeEach(async () => {
     await clearDatabase()
+  })
+
+  after(() => {
+    stubMailer.restoreMailer()
   })
 
   describe('execute', function () {
