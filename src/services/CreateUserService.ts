@@ -4,6 +4,7 @@ import { classToPlain } from 'class-transformer'
 import { User } from '../entities/User'
 import { UserRepository } from '../repositories/UserRepository'
 import { hash } from '../utils/hash'
+import { ServiceError } from '../utils/ServiceError'
 
 export interface UserRequest {
   name: string
@@ -18,11 +19,11 @@ export class CreateUserService {
   async execute(data: UserRequest): Promise<User> {
     const { name, email, admin = false, password } = data
 
-    if (!email) throw new Error('Email incorrect')
+    if (!email) throw new ServiceError('Email incorrect', 400)
 
     const userAlreadyExists = await this.userRepository.findOne({ email })
 
-    if (userAlreadyExists) throw new Error('User already exists')
+    if (userAlreadyExists) throw new ServiceError('User already exists', 400)
 
     const passwordHash = await hash(password)
 
