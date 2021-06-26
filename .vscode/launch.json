@@ -27,6 +27,28 @@
       }
     },
     {
+      "name": "Integration",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "stopOnEntry": false,
+      "args": [
+        "--require",
+        "ts-node/register",
+        "--require",
+        "dotenv/config",
+        "--no-timeouts",
+        "--colors",
+        "--exit",
+        "${workspaceFolder}/tests/integration/**/*.test.ts"
+      ],
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": null,
+      "env": {
+        "NODE_ENV": "test"
+      }
+    },
+    {
       "name": "Services",
       "type": "node",
       "request": "launch",

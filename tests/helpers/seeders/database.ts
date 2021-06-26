@@ -2,8 +2,9 @@ import { createConnection, getConnection } from 'typeorm'
 
 export async function connectInDatabase(): Promise<void> {
   try {
-    getConnection()
-  } catch {
+    const connection = getConnection()
+    if (!connection.isConnected) await connection.connect()
+  } catch (e) {
     await createConnection()
   }
 }
