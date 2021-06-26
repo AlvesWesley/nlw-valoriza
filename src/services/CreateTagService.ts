@@ -4,7 +4,7 @@ import { Tag } from '../entities/Tag'
 import { TagRepository } from '../repositories/TagRepository'
 
 export interface TagRequest {
-  name: string
+  name?: string
 }
 
 export class CreateTagService {
