@@ -10,8 +10,8 @@ import * as stubJwt from '../helpers/stubs/jwt'
 
 chai.use(chaiHTTP)
 
-describe('List User Receive Compliements', function () {
-  const url = '/users/compliments/receive'
+describe('List User Send Compliements', function () {
+  const url = '/users/compliments/send'
 
   before(async () => {
     await connectInDatabase()
@@ -31,7 +31,7 @@ describe('List User Receive Compliements', function () {
         userSenderId: userSender.id,
         userReceiverId: userReceiver.id
       })
-      stubJwt.stubJwtVerify({ sub: userReceiver.id })
+      stubJwt.stubJwtVerify({ sub: userSender.id })
       const response = await chai
         .request(app)
         .get(url)
@@ -42,7 +42,7 @@ describe('List User Receive Compliements', function () {
       expect(response.body).to.be.eql(
         compliments
           .filter(compliment => {
-            return compliment.userReceiverId === userReceiver.id
+            return compliment.userSenderId === userSender.id
           })
           .map(compliment => {
             return {
