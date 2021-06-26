@@ -9,11 +9,12 @@ import { Database } from './database'
 import { router } from './routes'
 import { notFound } from './middlewares/notFound'
 import { errorHandler } from './middlewares/errorHandler'
+import { enviroment } from './utils/env'
 
 export class App {
   private readonly app = express()
   private readonly database = new Database()
-  private readonly dev = process.env.NODE_ENV === 'development'
+  private readonly dev = enviroment === 'development'
 
   private middlewares() {
     this.app.use(morgan('common', { skip: () => !this.dev }))
