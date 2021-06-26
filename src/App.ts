@@ -2,11 +2,12 @@ import express, { Application, Request, Response, NextFunction } from 'express'
 import 'reflect-metadata'
 import 'express-async-errors'
 
-import './database'
+import { Database } from './database'
 import { router } from './routes'
 
 export class App {
   private readonly app = express()
+  private readonly database = new Database()
 
   private middlewares() {
     this.app.use(express.json())
@@ -32,6 +33,7 @@ export class App {
   }
 
   public async start(): Promise<Application> {
+    await this.database.connect()
     this.middlewares()
     this.routes()
 
@@ -39,6 +41,6 @@ export class App {
   }
 
   public async stop(): Promise<void> {
-    // Stop
+    await this.database.disconnect()
   }
 }
