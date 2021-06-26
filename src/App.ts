@@ -7,6 +7,7 @@ import 'express-async-errors'
 
 import { Database } from './database'
 import { router } from './routes'
+import { notFound } from './middlewares/notFound'
 import { errorHandler } from './middlewares/errorHandler'
 
 export class App {
@@ -22,6 +23,7 @@ export class App {
 
   private routes() {
     this.app.use(router)
+    this.app.all('*', notFound)
     this.app.use(errorHandler)
   }
 
