@@ -1,5 +1,6 @@
 import express, { Application } from 'express'
 import cors from 'cors'
+import helmet from 'helmet'
 import 'reflect-metadata'
 import 'express-async-errors'
 
@@ -13,6 +14,7 @@ export class App {
 
   private middlewares() {
     this.app.use(cors())
+    this.app.use(helmet())
     this.app.use(express.json())
   }
 
