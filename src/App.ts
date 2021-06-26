@@ -13,9 +13,10 @@ import { errorHandler } from './middlewares/errorHandler'
 export class App {
   private readonly app = express()
   private readonly database = new Database()
+  private readonly dev = process.env.NODE_ENV === 'development'
 
   private middlewares() {
-    this.app.use(morgan('common'))
+    this.app.use(morgan('common', { skip: () => !this.dev }))
     this.app.use(cors())
     this.app.use(helmet())
     this.app.use(express.json())
