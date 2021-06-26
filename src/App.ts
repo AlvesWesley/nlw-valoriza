@@ -1,9 +1,10 @@
-import express, { Application, Request, Response, NextFunction } from 'express'
+import express, { Application } from 'express'
 import 'reflect-metadata'
 import 'express-async-errors'
 
 import { Database } from './database'
 import { router } from './routes'
+import { errorHandler } from './middlewares/errorHandler'
 
 export class App {
   private readonly app = express()
@@ -11,25 +12,11 @@ export class App {
 
   private middlewares() {
     this.app.use(express.json())
-
-    this.app.use(
-      (err: Error, req: Request, res: Response, next: NextFunction) => {
-        if (err instanceof Error) {
-          return res.status(500).json({
-            error: err.message
-          })
-        }
-
-        return res.status(500).json({
-          status: 'error',
-          message: 'Internal Server Error'
-        })
-      }
-    )
   }
 
   private routes() {
     this.app.use(router)
+    this.app.use(errorHandler)
   }
 
   public async start(): Promise<Application> {
