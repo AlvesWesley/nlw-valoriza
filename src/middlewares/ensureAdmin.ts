@@ -18,5 +18,5 @@ export async function ensureAdmin(
     return next()
   }
 
-  return res.status(401).json({ error: 'Unauthorized' })
+  return res.status(403).json({ error: 'Unauthorized' })
 }

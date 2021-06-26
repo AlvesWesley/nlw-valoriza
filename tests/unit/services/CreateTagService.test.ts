@@ -38,7 +38,7 @@ describe('CreateTagService', function () {
       expect(badFn()).to.rejectedWith(Error)
     })
 
-    it('espera lancar erro por tag já existente', async () => {
+    it('espera lancar erro por tag ja existente', async () => {
       const createTagService = new CreateTagService()
       const [tag] = await seedTags()
       const badFn = async () => createTagService.execute({ name: tag.name })

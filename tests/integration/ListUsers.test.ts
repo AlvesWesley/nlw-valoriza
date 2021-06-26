@@ -47,7 +47,7 @@ describe('List Users', function () {
     })
   })
 
-  describe('resposta bem sucedida (401)', function () {
+  describe('resposta mal sucedida (401)', function () {
     it('espera retornar um response de erro por nao estar autenticado', async () => {
       const app = await getApplication()
       const response = await chai

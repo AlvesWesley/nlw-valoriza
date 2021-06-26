@@ -9,7 +9,7 @@ import * as stubJwt from '../helpers/stubs/jwt'
 
 chai.use(chaiHTTP)
 
-describe('Create User', function () {
+describe('Create Compliment', function () {
   const url = '/compliments'
 
   before(async () => {
@@ -44,7 +44,7 @@ describe('Create User', function () {
     })
   })
 
-  describe('resposta bem sucedida (401)', function () {
+  describe('resposta mal sucedida (401)', function () {
     it('espera retornar um response de erro por nao estar autenticado', async () => {
       const app = await getApplication()
       const compliement = {
