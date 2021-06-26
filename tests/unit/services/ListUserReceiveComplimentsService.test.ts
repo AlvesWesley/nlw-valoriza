@@ -39,12 +39,12 @@ describe('ListUserReceiveComplimentsService', function () {
 
       expect(result).to.be.eql(
         compliments
-          .filter(compliments => {
-            return compliments.userReceiverId === userReceiver.id
+          .filter(compliment => {
+            return compliment.userReceiverId === userReceiver.id
           })
-          .map(compliments => {
+          .map(compliment => {
             return {
-              ...compliments,
+              ...compliment,
               userSender,
               userReceiver,
               tag
