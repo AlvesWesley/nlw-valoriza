@@ -47,3 +47,13 @@ Executar os testes automatizados
 ```
 yarn test
 ```
+
+### Argumentos
+
+Os argumentos podem ser passados no comando para iniciar a aplicação
+
+|      Nome       |          Descrição          |           Exemplo            |
+| :-------------: | :-------------------------: | :--------------------------: |
+| `--log-level`\* | Informa qual o nível do log | `yarn dev --log-level debug` |
+
+\*[When to use the different log levels](https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels)
