@@ -1,3 +1,1 @@
-import { createConnection } from 'typeorm'
-
-createConnection()
+export { Database } from './Database'

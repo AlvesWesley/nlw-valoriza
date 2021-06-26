@@ -1,28 +1,31 @@
-import express, { Request, Response, NextFunction } from 'express'
-import 'reflect-metadata'
-import 'express-async-errors'
+import { Server } from 'http'
 
-import './database'
-import { router } from './routes'
+import { App } from './App'
 
-const app = express()
-const port = process.env.PORT || 5000
+type ShutdownHandler = () => void
 
-app.use(express.json())
-
-app.use(router)
-
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  if (err instanceof Error) {
-    return res.status(500).json({
-      error: err.message
+function getShutdownHandler(app: App, server: Server): ShutdownHandler {
+  return function () {
+    server.close(async err => {
+      await app.stop()
+      process.exit(err ? 1 : 0)
     })
   }
+}
 
-  return res.status(500).json({
-    status: 'error',
-    message: 'Internal Server Error'
-  })
-})
+async function server(): Promise<void> {
+  const app = new App()
+  const port = 5000
+  const application = await app.start()
+  const server = application.listen(port)
+  const shutdown = getShutdownHandler(app, server)
 
-app.listen(port, () => console.log('Server is running'))
+  process.on('SIGINT', shutdown)
+  process.on('SIGQUIT', shutdown)
+  process.on('SIGTERM', shutdown)
+}
+
+Promise.resolve()
+  .then(server)
+  .then(() => console.info('Server is running'))
+  .catch(console.error)
