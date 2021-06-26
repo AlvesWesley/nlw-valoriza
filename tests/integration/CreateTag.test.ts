@@ -21,7 +21,7 @@ describe('Create Tag', function () {
   })
 
   describe('resposta bem sucedida (201)', function () {
-    it('espera registrar um user retornar um response com os dados do user', async () => {
+    it('espera registrar um user retornar um response com os dados da tag', async () => {
       const app = await getApplication()
       const [user] = await seedUsers()
       const [tag] = tagsData
