@@ -1,4 +1,5 @@
 import express, { Application } from 'express'
+import morgan from 'morgan'
 import cors from 'cors'
 import helmet from 'helmet'
 import 'reflect-metadata'
@@ -13,6 +14,7 @@ export class App {
   private readonly database = new Database()
 
   private middlewares() {
+    this.app.use(morgan('common'))
     this.app.use(cors())
     this.app.use(helmet())
     this.app.use(express.json())
