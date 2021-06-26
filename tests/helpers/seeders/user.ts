@@ -4,7 +4,7 @@ import { User } from '../../../src/entities/User'
 
 export const defaultPassword = 'hard@cor3'
 
-const rawUsersData = [
+export const rawUsersData = [
   {
     // Admin user
     id: '3163363e-bcea-42ae-afad-936173ccf64c',
