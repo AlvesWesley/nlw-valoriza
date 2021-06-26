@@ -25,6 +25,6 @@ export function ensureAuthenticated(
 
     return next()
   } catch {
-    return res.status(401).json()
+    return res.status(401).json({ error: 'Unauthenticated' })
   }
 }

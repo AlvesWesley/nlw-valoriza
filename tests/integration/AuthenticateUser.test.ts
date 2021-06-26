@@ -8,7 +8,7 @@ import * as stubJwt from '../helpers/stubs/jwt'
 
 chai.use(chaiHTTP)
 
-describe('login', function () {
+describe('Authenticate User', function () {
   const url = '/login'
 
   before(async () => {
