@@ -3,6 +3,7 @@ import { getCustomRepository } from 'typeorm'
 import { Compliment } from '../entities/Compliment'
 import { ComplimentRepository } from '../repositories/ComplimentRepository'
 import { UserRepository } from '../repositories/UserRepository'
+import { ServiceError } from '../utils/ServiceError'
 
 interface ComplimentRequest {
   tagId: string
@@ -21,13 +22,13 @@ export class CreateComplimentService {
     const { tagId, userSenderId, userReceiverId, message } = data
 
     if (userSenderId === userReceiverId) {
-      throw new Error('Incorret User Receiver')
+      throw new ServiceError('Incorret User Receiver', 400)
     }
 
     const userReceiverExists = await this.userRepository.findOne(userReceiverId)
 
     if (!userReceiverExists) {
-      throw new Error('User Receiver does not exists!')
+      throw new ServiceError('User Receiver does not exists!', 400)
     }
 
     const compliment = this.complimentRepository.create({

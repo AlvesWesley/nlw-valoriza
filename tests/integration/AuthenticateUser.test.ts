@@ -35,13 +35,13 @@ describe('Authenticate User', function () {
     })
   })
 
-  describe('resposta mal sucedida (500)', function () {
+  describe('resposta mal sucedida (401)', function () {
     it('espera retornar um response de erro por email/senha incorretos', async () => {
       const app = await getApplication()
       const data = { email: 'johndoe@example.com', password: 'wrong_password' }
       const response = await chai.request(app).post(url).send(data)
 
-      expect(response.status).to.be.equal(500)
+      expect(response.status).to.be.equal(401)
       expect(response.body).to.be.eql({
         error: 'Email/Password incorrect'
       })

@@ -3,6 +3,7 @@ import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '../repositories/UserRepository'
 import { compare } from '../utils/hash'
 import { sign } from '../utils/jwt'
+import { ServiceError } from '../utils/ServiceError'
 
 const secret = process.env.SECRET || ''
 
@@ -20,13 +21,13 @@ export class AuthenticateUserService {
     const user = await this.userRepository.findOne({ email })
 
     if (!user) {
-      throw new Error('Email/Password incorrect')
+      throw new ServiceError('Email/Password incorrect', 401)
     }
 
     const passwordMatch = await compare(password, user.password)
 
     if (!passwordMatch) {
-      throw new Error('Email/Password incorrect')
+      throw new ServiceError('Email/Password incorrect', 401)
     }
 
     const token = sign({ email: user.email }, secret, {
