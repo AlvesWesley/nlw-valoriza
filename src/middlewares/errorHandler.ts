@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 
 import { ServiceError } from '../utils/ServiceError'
-import logger from '../logger'
+
+const logger = console
 
 export function errorHandler(
   err: Error,
