@@ -1,8 +1,8 @@
-# NLW Valoriza
+# NLW Valoriza 🏆🚀
 
 Valorize seus colegas devs 😜
 
-## Checklist
+## Checklist ✔
 
 - [x] Concluir as aulas do NLW
 - [x] Implementar graceful shutdown
@@ -13,7 +13,7 @@ Valorize seus colegas devs 😜
 - [ ] Configurar error tracking com Sentry
 - [ ] Fazer deploy em produção
 
-## Guia
+## Guia 📝
 
 ### Variáveis ambiente
 

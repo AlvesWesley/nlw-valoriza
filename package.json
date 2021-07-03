@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "tsnd --rs --transpile-only --require dotenv/config src/server",
     "test": "mocha --require ts-node/register --require dotenv/config --recursive \"tests/**/*.test.ts\" --exit",
-    "migrate": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run"
+    "migrate": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run",
+    "build": "tsc --build",
+    "start": "node dist/server"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
