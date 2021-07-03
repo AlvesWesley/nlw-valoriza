@@ -1,7 +1,8 @@
 import { Server } from 'http'
 
 import { App } from './App'
-import logger from './logger'
+
+const logger = console
 
 type ShutdownHandler = () => void
 
