@@ -10,8 +10,6 @@ Valorize seus colegas devs 😜
 - [x] Implementar classe customizada de erros
 - [x] Implementar testes automatizados (unitário e integração)
 - [x] Implementar envio de e-mail ao criar um novo elogio
-- [ ] Configurar error tracking com Sentry
-- [ ] Fazer deploy em produção
 
 ## Guia 📝
 
